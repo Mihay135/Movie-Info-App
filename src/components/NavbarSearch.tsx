@@ -1,38 +1,43 @@
-export default function () {
+import { useState } from "react";
+
+interface NavbarSearchProps {
+  onSearch: (query: string, type: string) => void;
+}
+
+export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
+  const [query, setQuery] = useState("");
+  const [type, setType] = useState("movie");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) onSearch(query.trim(), type);
+  };
+
   return (
-    <div className="Navbar-Search pt-2 ml-6 sticky right-0 w-[25%] mr-0 flex flex-row  ">
-      <form>
+    <div className="pt-2 w-[25%] flex flex-row items-center">
+      <form onSubmit={handleSubmit} className="flex items-center w-full">
         <select
-          id="Navbar-media-type"
-          name="media-type"
-          className="bg-[#252c3e] rounded-lg text-top text-blue-50 w-fit h-7 mt-2 mr-2 pl-2"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+          className="bg-[#252c3e] text-blue-50 h-10 px-3 rounded-l-lg border-r border-gray-600"
         >
-          <option value="volvo">Movie</option>
-          <option value="saab">Tv Show</option>
-          <option value="fiat">Theater</option>
-          <option value="audi">Other</option>
+          <option value="movie">Movie</option>
+          <option value="tv">TV Show</option>
         </select>
         <input
           type="search"
-          id="query"
-          name="q"
-          placeholder=" Search..."
-          className="bg-[#252c3e] rounded-xl h-[50%] grow w-[60%] text-center text-l text-blue-50 ring-2 ring-[#141821c9] focus:outline-none focus:ring-2 focus:ring-[#313a53]"
-        ></input>
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..."
+          className="bg-[#252c3e] text-blue-50 px-4 h-10 flex-1 focus:outline-none focus:ring-2 focus:ring-[#313a53]"
+        />
+        <button type="submit" className="bg-[#252c3e] hover:bg-[#3e4966] p-2 h-10 rounded-r-lg transition-colors">
+          <svg width="24" height="24" viewBox="0 0 64 64" stroke="currentColor" className="text-white">
+            <circle cx="26" cy="26" r="18" fill="none" strokeWidth="6" />
+            <line x1="38" y1="38" x2="56" y2="56" strokeWidth="6" strokeLinecap="round" />
+          </svg>
+        </button>
       </form>
-      <button className="hover:cursor-pointer mb-3 scale-90 ml-0 w-auto ">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 64 64"
-          stroke="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-[#252c3e] hover:text-[#3e4966] transition-colors duration-200"
-        >
-          <circle cx="26" cy="26" r="18" fill="none" stroke-width="6" />
-          <line x1="38" y1="38" x2="56" y2="56" stroke-width="6" stroke-linecap="round" />
-        </svg>
-      </button>
     </div>
   );
 }
