@@ -1,4 +1,3 @@
-// src/components/MovieModal.tsx
 import { X } from "lucide-react";
 import type { TMDBMovie, TMDBShow } from "../types/tmdb";
 
@@ -21,7 +20,6 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
       className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 backdrop-blur-sm overflow-y-auto py-8"
       onClick={onClose}
     >
-      {/* Added items-start + py-8 so content never gets hidden under the top */}
       <div
         className="relative w-full max-w-4xl mx-2 bg-[#151f30] rounded-2xl overflow-y-auto shadow-2xl max-h-screen"
         onClick={(e) => e.stopPropagation()}
@@ -35,7 +33,7 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
           )}
           <div className="absolute inset-0 bg-linear-to-t from-[#151f30] via-transparent to-transparent" />
 
-          {/* Close button — always visible */}
+          {/* Close button*/}
           <button
             onClick={onClose}
             className="absolute top-4 right-4 z-10 p-3 bg-black/70 rounded-full hover:bg-black/95 hover:outline-1 hover:outline-[#4e4e4e] transition backdrop-blur-sm"

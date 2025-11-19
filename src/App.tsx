@@ -13,10 +13,15 @@ function App() {
     setMediaType(type);
   };
 
+  const handleHomeClick = () => {
+    setSearchQuery("");
+    setMediaType("movie");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#0d1117]">
-      <Navbar onSearch={handleSearch} />
-      <main className="flex-1">
+      <Navbar onSearch={handleSearch} onHomeClick={handleHomeClick} />
+      <main className="flex-1 pb-20 md:pb-16">
         <MovieCardsContainer searchQuery={searchQuery} searchType={mediaType} />
       </main>
       <Footer />

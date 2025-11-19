@@ -14,7 +14,7 @@ export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
   };
 
   return (
-    <div className="pt-2 w-[25%] flex flex-row items-center">
+    <div className="pt-2 w-[25%] flex flex-row items-center mr-8">
       <form onSubmit={handleSubmit} className="flex items-center w-full">
         <select
           value={type}
