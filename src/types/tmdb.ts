@@ -1,0 +1,24 @@
+export interface TMDBMovie {
+  id: number;
+  title: string;
+  poster_path: string | null;
+  release_date: string;
+  vote_average: number;
+  overview: string;
+}
+
+export interface TMDBShow {
+  id: number;
+  name: string;
+  poster_path: string | null;
+  first_air_date: string;
+  vote_average: number;
+  overview: string;
+}
+
+export interface TMDBResponse {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: (TMDBMovie | TMDBShow)[];
+}
