@@ -25,9 +25,9 @@ export default function MovieCard({
   return (
     <div
       onClick={onClick}
-      className="w-72 bg-[#151f30] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#282f42] transform hover:scale-105 transition-all duration-300 cursor-pointer"
+      className="w-full max-w-[400px] bg-[#151f30] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#282f42] transform hover:scale-105 transition-all duration-300 cursor-pointer"
     >
-      <div className="h-96 bg-gray-900">
+      <div className="h-[500px] bg-gray-900">
         <img src={posterUrl} alt={title} className="w-full h-full object-cover" loading="lazy" />
       </div>
       <div className="p-4">

@@ -4,7 +4,7 @@ import FillerDiv from "./FillerDiv";
 import NavbarSearch from "./NavbarSearch";
 
 interface NavbarProps {
-  onSearch: (query: string, type: string) => void;
+  onSearch: (query: string, type: "movie" | "tv") => void;
 }
 
 export default function Navbar({ onSearch }: NavbarProps): ReactElement {

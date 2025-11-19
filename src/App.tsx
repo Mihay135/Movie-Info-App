@@ -6,16 +6,18 @@ import Navbar from "./components/Navbar";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [mediaType, setMediaType] = useState<"movie" | "tv">("movie");
+
+  const handleSearch = (query: string, type: "movie" | "tv") => {
+    setSearchQuery(query);
+    setMediaType(type);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0d1117]">
-      <Navbar
-        onSearch={(q, t) => {
-          console.log(q, t);
-        }}
-      />
+      <Navbar onSearch={handleSearch} />
       <main className="flex-1">
-        <MovieCardsContainer />
+        <MovieCardsContainer searchQuery={searchQuery} searchType={mediaType} />
       </main>
       <Footer />
     </div>

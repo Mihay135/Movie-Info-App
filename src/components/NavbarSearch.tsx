@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 interface NavbarSearchProps {
-  onSearch: (query: string, type: string) => void;
+  onSearch: (query: string, type: "movie" | "tv") => void;
 }
 
 export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("movie");
+  const [type, setType] = useState<"movie" | "tv">("movie");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) onSearch(query.trim(), type);
+    onSearch(query.trim(), type);
   };
 
   return (
@@ -18,7 +18,7 @@ export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
       <form onSubmit={handleSubmit} className="flex items-center w-full">
         <select
           value={type}
-          onChange={(e) => setType(e.target.value)}
+          onChange={(e) => setType(e.target.value as "movie" | "tv")}
           className="bg-[#252c3e] text-blue-50 h-10 px-3 rounded-l-lg border-r border-gray-600"
         >
           <option value="movie">Movie</option>
