@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useState, useEffect, useCallback } from "react";
 import MovieCard from "./MovieCard";
+import MovieModal from "./MovieModal";
 import axios from "axios";
 import type { TMDBMovie, TMDBShow, TMDBResponse } from "../types/tmdb";
 
@@ -30,6 +31,7 @@ export default function MovieCardsContainer({
   searchType = "movie",
 }: MovieCardsContainerProps): ReactElement {
   const [items, setItems] = useState<(TMDBMovie | TMDBShow)[]>([]);
+  const [selectedItem, setSelectedItem] = useState<(TMDBMovie | TMDBShow) | null>(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -102,6 +104,7 @@ export default function MovieCardsContainer({
                   releaseDate={"release_date" in item ? item.release_date : item.first_air_date || ""}
                   rating={item.vote_average}
                   overview={item.overview}
+                  onClick={() => setSelectedItem(item)}
                 />
               ))}
             </div>
@@ -113,6 +116,7 @@ export default function MovieCardsContainer({
               <Pagination page={page} totalPages={totalPages} onPageChange={fetchData} />
             </div>
           )}
+          {selectedItem && <MovieModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
         </>
       )}
     </div>
