@@ -4,7 +4,7 @@ interface NavbarTitleProps {
 
 export default function NavbarTitle({ onHomeClick }: NavbarTitleProps) {
   return (
-    <div className="p-3 ml-4 md:ml-6">
+    <div className="p-3 ">
       <button
         onClick={onHomeClick}
         className="text-2xl md:text-3xl font-bold text-white hover:text-gray-200 transition cursor-pointer"
