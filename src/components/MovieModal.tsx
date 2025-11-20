@@ -52,9 +52,13 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
       ? details?.runtime
         ? `${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m`
         : "N/A"
-      : details?.episode_run_time?.[0]
-      ? `${details.episode_run_time[0]} min/ep.`
-      : "N/A";
+      : details?.number_of_seasons
+      ? `${details.number_of_seasons} Season${details.number_of_seasons > 1 ? "s" : ""}${
+          details.number_of_episodes
+            ? ` • ${details.number_of_episodes} Episode${details.number_of_episodes > 1 ? "s" : ""}`
+            : ""
+        }${details.episode_run_time?.[0] ? ` • ${details.episode_run_time[0]} min/ep.` : ""}`
+      : "Airing";
 
   const genres = details?.genres?.map((g: any) => g.name).join(" • ") || "N/A";
   const status = details?.status || "N/A";
