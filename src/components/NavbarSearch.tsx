@@ -10,31 +10,39 @@ export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(query.trim(), type);
+    if (query.trim()) onSearch(query.trim(), type);
   };
 
   return (
-    <div className="pt-2 w-[25%] flex flex-row items-center mr-8">
-      <form onSubmit={handleSubmit} className="flex items-center w-full">
+    <div className="w-full">
+      {/* Dropdown*/}
+      <form onSubmit={handleSubmit} className="flex w-full gap-2">
         <select
           value={type}
           onChange={(e) => setType(e.target.value as "movie" | "tv")}
-          className="bg-[#252c3e] text-blue-50 h-10 px-3 rounded-l-lg border-r border-gray-600"
+          className="bg-[#252c3e] text-white px-1 py-2.5 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#3e4966] lg:w-30 sm:w-18"
         >
-          <option value="movie">Movie</option>
-          <option value="tv">TV Show</option>
+          <option value="movie">Movies</option>
+          <option value="tv">TV Shows</option>
         </select>
+
+        {/* Search input */}
         <input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search..."
-          className="bg-[#252c3e] text-blue-50 px-4 h-10 flex-1 focus:outline-none focus:ring-2 focus:ring-[#313a53]"
+          placeholder={`Search ${type === "movie" ? "movies" : "TV shows"}...`}
+          className="flex-1 bg-[#252c3e] text-white px-4 h-11 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3e4966] text-sm"
         />
-        <button type="submit" className="bg-[#252c3e] hover:bg-[#3e4966] p-2 h-10 rounded-r-lg transition-colors">
-          <svg width="24" height="24" viewBox="0 0 64 64" stroke="currentColor" className="text-white">
-            <circle cx="26" cy="26" r="18" fill="none" strokeWidth="6" />
-            <line x1="38" y1="38" x2="56" y2="56" strokeWidth="6" strokeLinecap="round" />
+
+        {/* Search button */}
+        <button
+          type="submit"
+          className="px-5 bg-[#3e4966] hover:bg-[#4a5578] rounded-lg transition flex items-center justify-center"
+        >
+          <svg width="22" height="22" viewBox="0 0 64 64" stroke="white" strokeWidth="6">
+            <circle cx="26" cy="26" r="18" fill="none" />
+            <line x1="38" y1="38" x2="56" y2="56" strokeLinecap="round" />
           </svg>
         </button>
       </form>

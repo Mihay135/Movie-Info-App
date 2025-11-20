@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#0d1117]">
       <Navbar onSearch={handleSearch} onHomeClick={handleHomeClick} />
-      <main className="flex-1 pb-20 md:pb-16">
+      <main className="flex-1">
         <MovieCardsContainer searchQuery={searchQuery} searchType={mediaType} />
       </main>
       <Footer />
