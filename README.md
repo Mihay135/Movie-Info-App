@@ -1,6 +1,7 @@
-# Movie-Info-App
-Simple Typescript App to fetch some results from TMDB (The Movie DataBase) API.
-On page load it fetches the most popular movies currently on the db and the user can search for a specific movie with the search bar.
+# Movie-Info-App - https://mihay135.github.io/Movie-Info-App/
+- Simple Typescript App to fetch some results from TMDB (The Movie DataBase) API.
+- On page load it fetches the most popular movies currently on the db and the user can search for a specific movie with the search bar.
+- Use the link above to try it!
 
 ## Attention! If you are using the above public link to the app please note that:
 - This app uses a public TMDB v4 read-only token (as intended by TMDB for client-side demos).  
