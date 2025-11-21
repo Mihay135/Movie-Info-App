@@ -148,8 +148,57 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
                 <p className="text-gray-400 text-sm font-medium">{genres}</p>
 
                 <p className="text-base leading-relaxed text-gray-200">{item.overview || "No overview available."}</p>
+                <div className="mt-6 pt-4 border-t border-gray-700">
+                  <a
+                    href={`https://www.themoviedb.org/${mediaType}/${mediaId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#3e4966] hover:bg-[#4a5578] rounded-lg text-gray-200 text-sm font-medium transition"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                    View on TMDB
+                  </a>
+                </div>
               </div>
             </div>
+          </div>
+          <div className="mt-2 pt-2 pb-2 border-t border-gray-700 text-center">
+            <p className="text-xs text-gray-500">
+              Data provided by{" "}
+              <a
+                href="https://www.themoviedb.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-400 hover:underline"
+              >
+                TMDB
+              </a>
+              {". "}
+              <p className="mb-2 mt-1 text-[10px]">
+                This app uses{" "}
+                <a
+                  href="https://www.themoviedb.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:text-cyan-400 transition"
+                >
+                  TMDB
+                  <img
+                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                    alt="TMDB Logo"
+                    className="h-2 inline-block"
+                  />
+                </a>{" "}
+                and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.
+              </p>
+            </p>
           </div>
         </div>
       </div>
