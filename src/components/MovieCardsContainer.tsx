@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard";
 import MovieModal from "./MovieModal";
 import axios from "axios";
 import type { TMDBMovie, TMDBShow, TMDBResponse } from "../types/tmdb";
+import Pagination from "./Pagination";
 
 // Bearer token loaded from .env
 const TMDB_BEARER_TOKEN = import.meta.env.VITE_TMDB_BEARER_TOKEN;
@@ -119,64 +120,6 @@ export default function MovieCardsContainer({
           {selectedItem && <MovieModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
         </>
       )}
-    </div>
-  );
-}
-
-//PAGINATION COMPONENT
-function Pagination({
-  page,
-  totalPages,
-  onPageChange,
-}: {
-  page: number;
-  totalPages: number;
-  onPageChange: (p: number) => void;
-}) {
-  const getPages = () => {
-    const delta = 2;
-    const range = [];
-    const min = Math.max(2, page - delta);
-    const max = Math.min(totalPages - 1, page + delta);
-
-    for (let i = min; i <= max; i++) range.push(i);
-    if (page - delta > 2) range.unshift("...");
-    if (page + delta < totalPages - 1) range.push("...");
-    range.unshift(1);
-    if (totalPages > 1) range.push(totalPages);
-    return range;
-  };
-
-  return (
-    <div className="flex gap-3 items-center text-white flex-wrap justify-center">
-      <button
-        onClick={() => onPageChange(page - 1)}
-        disabled={page === 1}
-        className="px-5 py-3 bg-[#252c3e] rounded-lg disabled:opacity-50 hover:bg-[#3e4966] transition"
-      >
-        ← Prev
-      </button>
-
-      {getPages().map((p, i) => (
-        <button
-          key={i}
-          onClick={() => typeof p === "number" && onPageChange(p)}
-          disabled={p === "..."}
-          className={`px-4 py-3 rounded-lg min-w-12 ${
-            p === page ? "bg-[#3e4966] font-bold" : p === "..." ? "cursor-default" : "bg-[#252c3e] hover:bg-[#3e4966]"
-          } transition`}
-        >
-          {p}
-        </button>
-      ))}
-
-      <button
-        onClick={() => onPageChange(page + 1)}
-        disabled={page === totalPages}
-        className="px-5 py-3 bg-[#252c3e] rounded-lg disabled:opacity-50 hover:bg-[#3e4966] transition"
-      >
-        Next →
-      </button>
     </div>
   );
 }

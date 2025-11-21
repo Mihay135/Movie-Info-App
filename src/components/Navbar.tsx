@@ -1,6 +1,5 @@
 import type { ReactElement } from "react";
 import NavbarTitle from "./NavbarTitle";
-import FillerDiv from "./FillerDiv";
 import NavbarSearch from "./NavbarSearch";
 
 interface NavbarProps {
@@ -10,15 +9,17 @@ interface NavbarProps {
 
 export default function Navbar({ onSearch, onHomeClick }: NavbarProps): ReactElement {
   return (
-    <div className="md:pt-2 w-full bg-[#171b26] sticky top-0 z-50 flex flex-col sm:flex-row items-center justify-between px-4 py-3 sm:py-0 sm:h-[10vh] gap-6 sm:gap-0">
-      <div className="w-full sm:w-auto flex justify-between sm:justify-start items-center">
-        <NavbarTitle onHomeClick={onHomeClick} />
-        <div className="sm:hidden" />
+    <header className="py-6 w-full bg-[#171b26] sticky top-0 z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          {/* App Title*/}
+          <NavbarTitle onHomeClick={onHomeClick} />
+          {/* Search Bar*/}
+          <div className="w-full sm:w-full md:w-auto md:max-w-md lg:max-w-lg xl:max-w-xl">
+            <NavbarSearch onSearch={onSearch} />
+          </div>
+        </div>
       </div>
-      <div className="w-full sm:w-[25%] sm:ml-10 lg:ml-[55%]">
-        <NavbarSearch onSearch={onSearch} />
-      </div>
-      <FillerDiv />
-    </div>
+    </header>
   );
 }
