@@ -2,7 +2,11 @@
 Simple Typescript App to fetch some results from TMDB (The Movie DataBase) API.
 On page load it fetches the most popular movies currently on the db and the user can search for a specific movie with the search bar.
 
-You will need YOUR OWN API key, which you can get for free by registering on the TMBD website and requesting it.
+## Attention! If you are using the above public link to the app please note that:
+- This app uses a public TMDB v4 read-only token (as intended by TMDB for client-side demos).  
+- Rate limits are enforced by TMDB — abuse from a single IP only affects that abuser.
+
+If you clone the repo you will need YOUR OWN API key/ Read-Only token, which you can get for free by registering on the TMBD website and requesting it.
 
 ## 📸 Screenshots
 | **App View** |
