@@ -1,3 +1,5 @@
+//API Json information taken from https://developer.themoviedb.org/reference/getting-started
+//Interfaces defined based on the info to be retrieved
 export interface TMDBMovie {
   id: number;
   title: string;

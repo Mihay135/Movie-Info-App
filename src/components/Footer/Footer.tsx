@@ -1,6 +1,6 @@
-// src/components/Footer.tsx
 import type { ReactElement } from "react";
-
+//Footer with disclaimer and attribution to comply with
+//TMDB Api Terms https://www.themoviedb.org/api-terms-of-use#:~:text=3%2E%20Attribution
 export default function Footer(): ReactElement {
   return (
     <footer className=" mt-12 py-2 px-2 text-center text-gray-500 text-[11px] fixed bottom-0 left-0 right-0 z-40 bg-[#171b26]/95 backdrop-blur-sm border-t border-[#2d3748]">

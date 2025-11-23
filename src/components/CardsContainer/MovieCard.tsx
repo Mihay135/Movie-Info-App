@@ -12,6 +12,7 @@ interface MovieCardProps {
 
 const baseImgUrl = "https://image.tmdb.org/t/p/w500";
 
+//Function Takes MovieCardProps and Returns a ReactElement containing the Movie/TvSeries info.
 export default function MovieCard({
   title,
   posterPath,
@@ -27,9 +28,12 @@ export default function MovieCard({
       onClick={onClick}
       className="w-full max-w-[400px] bg-[#151f30] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#282f42] transform hover:scale-105 transition-all duration-300 cursor-pointer"
     >
+      {/* Poster */}
       <div className="h-[500px] bg-gray-900">
         <img src={posterUrl} alt={title} className="w-full h-full object-cover" loading="lazy" />
       </div>
+
+      {/* Description */}
       <div className="p-4">
         <h3 className="text-xl font-bold text-white truncate">{title}</h3>
         <div className="flex justify-between items-center mt-2 text-sm text-gray-300">

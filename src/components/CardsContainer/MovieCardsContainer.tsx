@@ -1,12 +1,12 @@
 import type { ReactElement } from "react";
 import { useState, useEffect, useCallback } from "react";
+import type { TMDBMovie, TMDBShow, TMDBResponse } from "../../types/tmdb";
 import MovieCard from "./MovieCard";
 import MovieModal from "./MovieModal";
 import axios from "axios";
-import type { TMDBMovie, TMDBShow, TMDBResponse } from "../types/tmdb";
 import Pagination from "./Pagination";
 
-// Bearer token loaded from .env
+// Bearer token (v4 read-only) loaded from .env
 const TMDB_BEARER_TOKEN = import.meta.env.VITE_TMDB_BEARER_TOKEN;
 
 if (!TMDB_BEARER_TOKEN) {
@@ -22,15 +22,18 @@ const tmdb = axios.create({
   },
 });
 
+//Props Interface
 interface MovieCardsContainerProps {
   searchQuery?: string;
   searchType?: "movie" | "tv";
 }
 
+//Takes MovieCardsContainerProps and returns ReactElement displaying the resulting grid if results are found
 export default function MovieCardsContainer({
   searchQuery = "",
   searchType = "movie",
 }: MovieCardsContainerProps): ReactElement {
+  //State variables
   const [items, setItems] = useState<(TMDBMovie | TMDBShow)[]>([]);
   const [selectedItem, setSelectedItem] = useState<(TMDBMovie | TMDBShow) | null>(null);
   const [loading, setLoading] = useState(true);
@@ -38,6 +41,7 @@ export default function MovieCardsContainer({
   const [totalPages, setTotalPages] = useState(1);
   const [currentQuery, setCurrentQuery] = useState("");
 
+  //Fetch Results or initial data Function
   const fetchData = useCallback(
     async (pageNum: number) => {
       setLoading(true);
@@ -51,6 +55,7 @@ export default function MovieCardsContainer({
           setCurrentQuery("");
         }
 
+        //Get Results from TMDB API Axios Connection
         const res = await tmdb.get<TMDBResponse>(url, {
           params: {
             page: pageNum,
@@ -58,6 +63,7 @@ export default function MovieCardsContainer({
           },
         });
 
+        //Set results to state variables
         setItems(res.data.results);
         setTotalPages(Math.min(res.data.total_pages || 1, 500));
         setPage(pageNum);
@@ -72,14 +78,16 @@ export default function MovieCardsContainer({
     [searchQuery, searchType]
   );
 
+  //Actual data Fetching Call
   useEffect(() => {
     setPage(1);
     fetchData(1);
   }, [searchQuery, searchType, fetchData]);
 
+  //Display Results Grid
   return (
     <div className="min-h-screen bg-[#131720] p-8">
-      {/* Optional header when searching */}
+      {/* Optional header displaying name of the results when searching */}
       {currentQuery && (
         <h2 className="text-3xl text-white font-bold text-center mb-8">
           Results for: <span className="text-[#3e4966]">"{currentQuery}"</span> (
@@ -87,6 +95,7 @@ export default function MovieCardsContainer({
         </h2>
       )}
 
+      {/*Loading placeholder on grid */}
       {loading ? (
         <div className="text-center text-white text-2xl py-20">Loading...</div>
       ) : items.length === 0 ? (
@@ -95,6 +104,7 @@ export default function MovieCardsContainer({
         </div>
       ) : (
         <>
+          {/*Actual Grid with Results*/}
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-10 xl:gap-12 2xl:gap-16 justify-items-center">
               {items.map((item) => (
@@ -110,13 +120,13 @@ export default function MovieCardsContainer({
               ))}
             </div>
           </div>
-
-          {/* Pagination */}
+          {/* Pagination (Page number viewer) */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-16 mb-8">
               <Pagination page={page} totalPages={totalPages} onPageChange={fetchData} />
             </div>
           )}
+          {/*Display Modal Overlay*/}
           {selectedItem && <MovieModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
         </>
       )}

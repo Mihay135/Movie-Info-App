@@ -2,6 +2,7 @@ interface NavbarTitleProps {
   onHomeClick: () => void;
 }
 
+//Title on click return to initial page
 export default function NavbarTitle({ onHomeClick }: NavbarTitleProps) {
   return (
     <div className="p-3">

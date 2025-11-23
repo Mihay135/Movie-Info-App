@@ -1,12 +1,14 @@
 import type { ReactElement } from "react";
-import NavbarTitle from "./NavbarTitle";
-import NavbarSearch from "./NavbarSearch";
+import NavbarTitle from "./NavbarTitle.tsx";
+import NavbarSearch from "./NavbarSearch.tsx";
 
+//Props Interface
 interface NavbarProps {
   onSearch: (query: string, type: "movie" | "tv") => void;
   onHomeClick: () => void;
 }
 
+//Navbar with Title and Search Functionalities
 export default function Navbar({ onSearch, onHomeClick }: NavbarProps): ReactElement {
   return (
     <header className="py-6 w-full bg-[#171b26] sticky top-0 z-10">

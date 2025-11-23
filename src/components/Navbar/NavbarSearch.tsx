@@ -4,7 +4,9 @@ interface NavbarSearchProps {
   onSearch: (query: string, type: "movie" | "tv") => void;
 }
 
+//Search Functionality with Debouncing to avoid many api calls when typing on search
 export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
+  const debouncingDelay = 400;
   const [query, setQuery] = useState("");
   const [type, setType] = useState<"movie" | "tv">("movie");
   const [isLoading, setIsLoading] = useState(false);
@@ -21,11 +23,12 @@ export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
     const timer = setTimeout(() => {
       onSearch(query.trim(), type);
       setIsLoading(false);
-    }, 400);
+    }, debouncingDelay);
 
     return () => clearTimeout(timer);
   }, [query, type, onSearch]);
 
+  //Form Submit Handler
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
@@ -34,6 +37,7 @@ export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
     }
   };
 
+  //Navbar Search
   return (
     <form onSubmit={handleSubmit} className="relative w-full">
       <div className="flex items-center bg-[#252c3e] rounded-lg overflow-hidden shadow-lg border border-[#3e4966]/50">

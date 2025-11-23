@@ -1,7 +1,8 @@
 import { X } from "lucide-react";
 import { useState, useEffect } from "react";
-import type { TMDBMovie, TMDBShow } from "../types/tmdb";
+import type { TMDBMovie, TMDBShow } from "../../types/tmdb";
 
+//Props Interface
 interface MovieModalProps {
   item: TMDBMovie | TMDBShow;
   onClose: () => void;
@@ -10,7 +11,9 @@ interface MovieModalProps {
 const baseImgUrl = "https://image.tmdb.org/t/p/w1280";
 const TMDB_BEARER_TOKEN = import.meta.env.VITE_TMDB_BEARER_TOKEN;
 
+//Takes a TMDB Movie or TV Show type and onCloseFunction and returns The Movie Modal Overlay with trailer and info.
 export default function MovieModal({ item, onClose }: MovieModalProps) {
+  //State Variables
   const [trailerKey, setTrailerKey] = useState<string | null>(null);
   const [details, setDetails] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -24,6 +27,7 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
   const mediaType = "title" in item ? "movie" : "tv";
   const mediaId = item.id;
 
+  //Trailer Fetching
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -47,6 +51,7 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
     fetchData();
   }, [mediaId, mediaType]);
 
+  //Get the duration if movie (hh::mm) or Number of seasons and episode count (n seasons - m episodes)
   const runtime =
     mediaType === "movie"
       ? details?.runtime
@@ -60,10 +65,12 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
         }${details.episode_run_time?.[0] ? ` • ${details.episode_run_time[0]} min/ep.` : ""}`
       : "Airing";
 
+  //Get additional info
   const genres = details?.genres?.map((g: any) => g.name).join(" • ") || "N/A";
   const status = details?.status || "N/A";
   const originalLanguage = details?.original_language?.toUpperCase() || "??";
 
+  //Modal Overlay
   return (
     <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md overflow-y-auto" onClick={onClose}>
       <div className="min-h-screen flex items-start justify-center py-6 px-4">
@@ -124,31 +131,48 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
               {/*Info*/}
               <div className="md:col-span-8 space-y-5 text-center md:text-left">
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">{title}</h1>
-                  <p className="text-xl text-gray-300 mt-1">{year}</p>
+                  <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight" title="Title">
+                    {title}
+                  </h1>
+                  <p className="text-xl text-gray-300 mt-1" title="Release Year or First Aired">
+                    {year}
+                  </p>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm">
-                  <span className="bg-yellow-500 text-black px-5 py-2.5 rounded-full font-bold text-xl">
+                  <span className="bg-yellow-500 text-black px-5 py-2.5 rounded-full font-bold text-xl" title="Rating">
                     {item.vote_average.toFixed(1)}
                   </span>
                   <span className="text-gray-400">TMDB Rating</span>
                   <span className="text-gray-500">•</span>
-                  <span className="text-gray-300">{runtime}</span>
+                  <span className="text-gray-300" title="Runtime / Duration">
+                    {runtime}
+                  </span>
                   <span className="text-gray-500">•</span>
-                  <span className="text-gray-400 text-sm">{originalLanguage}</span>
+                  <span className="text-gray-400 text-sm" title="Original Language">
+                    {originalLanguage}
+                  </span>
                   {status !== "Released" && status !== "Returning Series" && (
                     <>
                       <span className="text-gray-500">•</span>
-                      <span className="text-gray-400 text-sm">{status}</span>
+                      <span
+                        className="text-gray-400 text-sm"
+                        title="Status: Released, Returning Series or In Production"
+                      >
+                        {status}
+                      </span>
                     </>
                   )}
                 </div>
 
-                <p className="text-gray-400 text-sm font-medium">{genres}</p>
+                <p className="text-gray-400 text-sm font-medium" title="Genres">
+                  {genres}
+                </p>
 
-                <p className="text-base leading-relaxed text-gray-200">{item.overview || "No overview available."}</p>
-                <div className="mt-6 pt-4 border-t border-gray-700">
+                <p className="text-base leading-relaxed text-gray-200" title="Overview">
+                  {item.overview || "No overview available."}
+                </p>
+                <div className="mt-6 pt-4 border-t border-gray-700" title="Click to get more info on TMDB">
                   <a
                     href={`https://www.themoviedb.org/${mediaType}/${mediaId}`}
                     target="_blank"
@@ -169,6 +193,9 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
               </div>
             </div>
           </div>
+          {/*Disclaimer and Attribution to comply with 
+          TMDB Api Terms https://www.themoviedb.org/api-terms-of-use#:~:text=3%2E%20Attribution
+           */}
           <div className="mt-2 pt-2 pb-2 border-t border-gray-700 text-center">
             <p className="text-xs text-gray-500">
               Data provided by{" "}

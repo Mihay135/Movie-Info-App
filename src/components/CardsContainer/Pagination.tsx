@@ -1,11 +1,13 @@
 import type { FC } from "react";
 
+//Props Interface
 interface PaginationProps {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
 
+//Define Pagination Behaviour
 const Pagination: FC<PaginationProps> = ({ page, totalPages, onPageChange }) => {
   const getPages = () => {
     const delta = 2;
@@ -21,6 +23,7 @@ const Pagination: FC<PaginationProps> = ({ page, totalPages, onPageChange }) => 
     return range;
   };
 
+  //Return Page Numbers as Buttons with prev and next buttons
   return (
     <div className="flex gap-3 items-center text-white flex-wrap justify-center">
       <button
