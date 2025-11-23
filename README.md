@@ -64,7 +64,7 @@ To run Movie App, ensure you have:
 ## Getting Started
 
 ### 1. Get a free TMDB API key
-Go to [https://www.themoviedb.org/settings/api](https://www.themoviedb.org) → create an account → request an API key (takes 2 minutes).
+Go to [https://www.themoviedb.org](https://www.themoviedb.org) → create an account → request an API key (takes 2 minutes).
 
 ### 2. Clone and install
 ```bash
