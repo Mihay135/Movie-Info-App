@@ -27,7 +27,7 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
   const mediaType = "title" in item ? "movie" : "tv";
   const mediaId = item.id;
 
-  //Trailer Fetching
+  //Trailer Fetching and other Data
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -116,7 +116,7 @@ export default function MovieModal({ item, onClose }: MovieModalProps) {
             )}
           </div>
 
-          {/*Three-column info */}
+          {/*Below Trailer*/}
           <div className="px-6 pb-8 pt-6">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               {/*Poster*/}
