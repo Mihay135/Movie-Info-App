@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import Image_Missing from "../assets/Image_Missing.png";
+import Image_Missing from "../../assets/Image_Missing.png";
 
 interface MovieCardProps {
   title: string;

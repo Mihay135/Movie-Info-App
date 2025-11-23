@@ -45,7 +45,7 @@ export default function NavbarSearch({ onSearch }: NavbarSearchProps) {
         <select
           value={type}
           onChange={(e) => setType(e.target.value as "movie" | "tv")}
-          className="hidden sm:block bg-[#2d3748] text-gray-200 px-4 py-3 text-sm font-medium focus:outline-none border-r border-[#3e4966]"
+          className="hidden sm:block bg-[#2d3748] text-gray-200 px-4 py-3 text-sm font-medium focus:outline-none border-r border-[#3e4966] hover:bg-[#3e4966]"
         >
           <option value="movie">Movies</option>
           <option value="tv">TV Shows</option>
