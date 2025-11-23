@@ -7,7 +7,7 @@
 - This app uses a public TMDB v4 read-only token (as intended by TMDB for client-side demos).  
 - Rate limits are enforced by TMDB — abuse from a single IP only affects that abuser.
 
-If you clone the repo you will need YOUR OWN API key/ Read-Only token, which you can get for free by registering on the TMBD website and requesting it.
+If you clone the repo you will need YOUR OWN API key / Read-Only token, which you can get for free by registering on the TMBD website and requesting it.
 
 ## 📸 Screenshots
 | **App View** |
@@ -38,7 +38,7 @@ If you clone the repo you will need YOUR OWN API key/ Read-Only token, which you
 - **Movies & TV shows** with smart filtering
 - **Auto-playing YouTube trailers** in a cinematic modal
 - **Detailed info**: rating, runtime/seasons, genres, overview, original language
-- **Fully responsive** — looks perfect on mobile, tablet, and desktop
+- **Fully responsive**: looks perfect on mobile, tablet, and desktop
 - **Clean, modern UI** with dark mode and smooth animations
 
 ## 🛠️ Technologies Used
@@ -50,7 +50,7 @@ If you clone the repo you will need YOUR OWN API key/ Read-Only token, which you
 - **Vite**: To build the project fast
 - **Lucide-React**: For simple icons.
 - **Axios**: For simpler fetch requests.
-- **TMDB API** — movie & TV data (you will need your own key)
+- **TMDB API**: movie & TV data (you will need your own key)
 
 ## 📋 Prerequisites
 
@@ -64,7 +64,7 @@ To run Movie App, ensure you have:
 ## Getting Started
 
 ### 1. Get a free TMDB API key
-Go to [https://www.themoviedb.org](https://www.themoviedb.org) → create an account → request an API key (takes 2 minutes).
+Go to [https://www.themoviedb.org](https://www.themoviedb.org), create an account and request an API key (takes 2 minutes).
 
 ### 2. Clone and install
 ```bash
@@ -84,7 +84,7 @@ In your project folder type
 ```bash
 npm run dev
 ```
-Then open on port 5173(usually) →  http://localhost:5173 
+Then open on port 5173(usually) at  http://localhost:5173 
 
 ## Acknowledgments
 - Movie & Tv Shows API Data from <a href="https://www.themoviedb.org/">TMDB</a>
@@ -94,6 +94,6 @@ Then open on port 5173(usually) →  http://localhost:5173
 
 ---
 Star🌟 this repo if you liked it!
-Feel free to open issues or PRs — contributions are very welcome!
+Feel free to open issues or PRs. Contributions are very welcome!
 
 
