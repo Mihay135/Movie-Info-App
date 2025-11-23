@@ -55,16 +55,16 @@ If you clone the repo you will need YOUR OWN API key/ Read-Only token, which you
 ## 📋 Prerequisites
 
 To run Movie App, ensure you have:
-- TMDB API Key
+- TMDB API Key or Read-only Access token
 - Node.js (v16 or higher) and NPM installed.
 - A modern web browser (e.g., Chrome, Firefox).
 - Git (optional, for cloning the repository).
-- A web server to run the app (e.g. VSCode has extensions for Live Servers)
+- A web server to run the app (e.g. use NPM local server)
 
 ## Getting Started
 
 ### 1. Get a free TMDB API key
-Go to [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) → create an account → request an API key (takes 2 minutes).
+Go to [https://www.themoviedb.org/settings/api](https://www.themoviedb.org) → create an account → request an API key (takes 2 minutes).
 
 ### 2. Clone and install
 ```bash
@@ -74,7 +74,7 @@ npm install
 ```
 
 ### 3. Add your own API bearer
-Create a .env file in your root
+Create a .env file in your root or modify the existing one and add:
 ```env
 VITE_TMDB_BEARER_TOKEN=your_actual_bearer_token_here
 ```
@@ -84,13 +84,13 @@ In your project folder type
 ```bash
 npm run dev
 ```
-Then open (usually) →  http://localhost:5173 
+Then open on port 5173(usually) →  http://localhost:5173 
 
 ## Acknowledgments
-- Movie Data from <a href="#">TMDB</a>
-- Icons from <a href="#">Lucide</a>
-- React.js 
-- Vite, awesome tool to start projects
+- Movie & Tv Shows API Data from <a href="https://www.themoviedb.org/">TMDB</a>
+- Icons from <a href="https://lucide.dev/">Lucide</a>
+- <a href="https://react.dev/"> React.js </a>
+- Tool to start the project: <a href="https://vite.dev/"> Vite.js</a>
 
 ---
 Star🌟 this repo if you liked it!
