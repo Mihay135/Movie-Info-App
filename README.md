@@ -87,7 +87,7 @@ npm run dev
 Then open on port 5173(usually) at  http://localhost:5173 
 
 ## Acknowledgments
-- Movie & Tv Shows API Data from <a href="https://www.themoviedb.org/">TMDB</a>
+- Movie & Tv Shows API Data from <a href="https://www.themoviedb.org/">TMDB</a> (This app uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.)
 - Icons from <a href="https://lucide.dev/">Lucide</a>
 - <a href="https://react.dev/"> React.js </a>
 - Tool to start the project: <a href="https://vite.dev/"> Vite.js</a>
